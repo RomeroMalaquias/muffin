@@ -861,12 +861,11 @@ meta_window_actor_has_shadow (MetaWindowActor *self)
   if (window_type == META_WINDOW_DND ||
       window_type == META_WINDOW_DESKTOP)
     return FALSE;
-
-  if (window_type == META_WINDOW_MENU
+  gboolean test_window_type = window_type == META_WINDOW_MENU;
 #if 0
-      || window_type == META_WINDOW_DROPDOWN_MENU
+  test_window_type = test_window_type  || window_type == META_WINDOW_DROPDOWN_MENU;
 #endif
-      )
+  if (test_window_type)
     return TRUE;
 
 #if 0
